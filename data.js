@@ -1,4 +1,5 @@
 /* DeepNick 博客数据文件：由浏览器当前内容导出 */
+window.DEEPNICK_DATA_VERSION = '2026-09-01-2';
 window.DEEPNICK_DATA = {
   "competitions": [
     {
@@ -105,3 +106,10 @@ window.DEEPNICK_DATA = {
     }
   ]
 };
+try {
+  const oldVersion = localStorage.getItem('deepnick-data-version');
+  if (!localStorage.getItem('deepnick-blog-data') || oldVersion !== window.DEEPNICK_DATA_VERSION) {
+    localStorage.setItem('deepnick-blog-data', JSON.stringify(window.DEEPNICK_DATA));
+    localStorage.setItem('deepnick-data-version', window.DEEPNICK_DATA_VERSION);
+  }
+} catch (e) {}
